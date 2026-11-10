@@ -1,0 +1,451 @@
+1. STACK OPERATIONS
+
+import java.util.Scanner;
+
+class ArrayStack{
+	private int maxSize;
+	private int[] stackArray;
+	private int top;
+	
+	public ArrayStack(int size){
+		maxSize = size;
+		stackArray = new int[maxSize];
+	    top = -1 ;}
+		
+		public void push(int value){
+			if(isFull()){
+			System.out.println("Stack overflow cannot push" + value);}
+		    else{
+				stackArray[++top] = value;
+			System.out.println(value + " Push to Stack successfully");}
+	    }
+			
+	    public int pop() {
+			if (isEmpty()){
+			    System.out.println("Stack is empty");
+				return -1 ;}
+				
+			else{
+				int poppedValue = stackArray[top--];
+				System.out.println(poppedValue + " Stack popped succesfully");
+			    return poppedValue;}
+		}
+			
+		public int peek() {
+			if (isEmpty()){
+				System.out.println("Stack is empty");
+			    return -1;}
+			else{
+			return stackArray[top];}
+		}
+		
+		public boolean isEmpty() {
+		    return(top == -1);}
+		
+		public boolean isFull() {
+		   return (top == maxSize - 1);}
+		   
+		public void display() {
+			if (isEmpty()){
+			    System.out.println("Stack is empty");}
+			else{
+				System.out.println("Current Stack (Top to Bottom): ");
+                  for(int i = top ; i >= 0 ; i--){
+				  System.out.print(stackArray[i] + " ");}
+			System.out.print();}
+		}
+}		
+			
+public class StackApp{
+    public static void main(String[] args){
+         Scanner scanner = new Scanner(System.in);
+		 System.out.print("Enter the maximum size of Stack: ");
+		 int size = scanner.nextInt();
+		 ArrayStack stack = new ArrayStack(size);
+		 
+		 int choice;
+		 do{
+			 System.out.println("____Stack Operations Menu____");
+			 System.out.println("1. Push");
+			 System.out.println("2. Pop");
+			 System.out.println("3. Peek");
+			 System.out.println("4. display Stack");
+			 System.out.println("5. EXIT");
+			 System.out.print("Eneter your choice :" );
+			 choice =scanner.nextInt();
+			 
+			switch (choice) {
+				case 1:
+				  System.out.print("Enter value to push : ");
+				  int val = scanner.nextInt();
+				  stack.push(val);
+				  break;
+				case 2:
+				  stack.pop();
+				  break;
+				case 3:
+				  int topval=stack.peek();
+				  if(topval != -1){
+				  System.out.println("Top element is : "+ topval);}
+				  break;
+				case 4:
+				  stack.display();
+				  break;
+				case 5:
+				  System.out.println("GOOD BYE!!!");
+				  break;
+				default :
+			System.out.println("Invalid choice!!!");}
+			
+		 }while(choice != 5);
+		 
+		 scanner.close();
+	}
+}
+				 
+
+DOUBLE LINKEDLIST
+
+class Node{
+	String name;
+	Node next;
+	Node prev;
+	
+	public Node(String name){
+		this.name = name;
+		this.next = null;
+	    this.prev = null;}
+}
+
+class DoublyLinkedList{
+	private Node head;
+	private Node tail;
+	private int count = 0;
+	
+	public void insertAtBeginning(String name){
+		Node newNode = new Node(name);
+		if(head == null){
+		   head = tail = newNode;}
+		else{
+		   newNode.next = head;
+		   head.prev = newNode;
+		   head = newNode;}
+		   
+		   count++;
+		   System.out.println("Inserted at Beginning : " + name);
+	}
+	
+    public void insertAtEnd(String name){
+		Node newNode = new Node(name);
+		if(tail == null){
+		tail = head = newNode;}
+		else{
+			tail.next = newNode;
+			newNode.prev = tail;
+		tail = newNode;}
+		
+		count++;
+	System.out.println("Insert At End " + name);}
+	
+	public void insertAfter(String targetStop , String name ){
+		Node current = head;
+		while(current != null && !current.name.equals(targetStop)){
+		current = current.next;}
+		
+		if (current == null){
+		System.out.println("Stop " + targetStop +" not found!!");
+		return;}
+		
+		Node newNode = new Node(name);
+		newNode.next = current.next;
+		newNode.prev = current;
+		
+		if(current.next != null){
+		current.next.prev = newNode;}
+		
+		else{
+		tail = newNode;}
+		
+		current.next = newNode;
+		count++;
+	System.out.println("Insert " + name + " after "+targetStop);
+	}
+	
+	
+	public void deleteByName(String name) {
+        if (head == null) {
+            System.out.println("Route is empty!");
+            return;
+        }
+
+        Node current = head;
+        while (current != null && !current.name.equals(name)) {
+            current = current.next;
+        }
+
+        if (current == null) {
+            System.out.println("Stop " + name + " not found!");
+            return;
+        }
+
+        if (current == head) {
+            head = head.next;
+            if (head != null) head.prev = null;
+            else tail = null;
+        } else if (current == tail) {
+            tail = tail.prev;
+            if (tail != null) tail.next = null;
+            else head = null;
+        } else {
+            current.prev.next = current.next;
+            current.next.prev = current.prev;
+        }
+
+        count--;
+        System.out.println("Deleted stop by name: " + name);
+    }	
+	
+	public void deleteByPosition(int pos) {
+        if (head == null || pos < 1 || pos > count) {
+            System.out.println("Invalid position!");
+            return;
+        }
+
+        if (pos == 1) {
+            deleteByName(head.name);
+            return;
+        }
+
+        Node current = head;
+        for (int i = 1; i < pos; i++) {
+            current = current.next;
+        }
+
+        deleteByName(current.name);
+    }
+	
+	public void displayForward(){
+		Node current = head;
+		System.out.print("Forward route : ");
+		while(current != null){
+			System.out.print(current.name + " <-> ");
+		    current = current.next;}
+			
+			System.out.println("null");
+	}
+			
+	public void displayReverse(){
+		Node current = tail;
+		System.out.print("Reverse route :");
+		while(current != null){
+			System.out.print(current.name + " <-> ");
+		current = current.prev;}
+		
+		System.out.println("null");
+	}
+	
+	public void displayCount(){
+	System.out.println("Current number of Bus Stops : "+ count);
+    }
+}
+		
+public class BusRouteApp{
+     public static void main(String[] args){
+		 DoublyLinkedList route = new DoublyLinkedList();
+		 
+		 System.out.println("Insert bus stop A,B,C,D at beggin");
+		 route.insertAtBeginning("A");
+		 route.insertAtBeginning("B");
+		 route.insertAtBeginning("C");
+		 route.insertAtBeginning("D");
+		 route.displayForward();
+		 System.out.println();
+		 
+		 System.out.println("Insert bus stops E and F at the end");
+		 route.insertAtEnd("E");
+		 route.insertAtEnd("F");
+		 route.displayForward();
+		 System.out.println();
+		 
+		System.out.println("--- c. Insert G after B, and H after E ---");
+        route.insertAfter("B", "G");
+        route.insertAfter("E", "H");
+        route.displayForward();
+        System.out.println();
+		
+		System.out.println("--- f. Count current number of stops ---");
+        route.displayCount();
+        System.out.println();
+		
+		System.out.println("Display in Forward & Reverse Directions");
+		route.displayForward();
+		route.displayReverse();
+		System.out.println();
+	 }
+}
+
+PALINDROME USING STACK
+
+import java.util.Scanner;
+
+public class palindrome{
+	int maxsize;
+	char [] Sarray;
+	int top;
+	
+	public palindrome(int size){
+		maxsize = size;
+		Sarray = new char[maxsize];
+		top =-1;
+	}
+	public void push( char value){
+		if (top < maxsize-1){
+			top++;
+			Sarray[top]=value;
+			
+		}
+	}
+	public char pop(){
+		if(top>-1){
+			char popch = Sarray[top];
+			top--;
+			return popch;
+		}
+		return '\0';
+	}
+	public static void main(String[] args){
+		Scanner scanner= new Scanner(System.in);
+		
+		System.out.println ("Enter the word :");
+		String OriW = scanner.nextLine();
+		
+		int length = OriW.length();
+		
+		palindrome stack = new palindrome(length);
+		
+		for(int i= 0 ; i< length; i++){
+			stack.push(OriW.charAt(i));
+		}
+		boolean isPalindrome = true;
+		for(int i= 0 ; i< length; i++){
+		  if( stack.pop()!= OriW.charAt(i)){
+			  isPalindrome = false;
+			  break;
+		  }
+		}
+		if (isPalindrome) {
+            System.out.println("Result: The given word is a PALINDROME!");
+        } else {
+            System.out.println("Result: The given word is NOT a palindrome.");
+        }
+        
+        scanner.close();
+		}
+}
+
+2D ARRAY
+
+import java.util.Scanner;
+public class MatrixAddition
+{
+
+	static Scanner input = new Scanner(System.in);
+
+	public static void insertion(int[][] array, int m, int n)
+	{
+		for(int i = 0; i < m; i++)
+		{
+			for(int j = 0; j < n; j++)
+			{
+				System.out.print("value [" + i + "] [" + j + "] : ");
+				array[i][j] = input.nextInt();
+				System.out.println();
+			}
+		}
+	}
+	
+	public static void printArray(int[][] array, int m, int n)
+	{
+		for(int i = 0; i < m; i++)
+		{
+			for(int j = 0; j < n; j++)
+			{
+				System.out.print(array[i][j] + "\t");
+			}
+			
+			System.out.println();
+		}
+	}
+	
+	public static void addArrays(int[][] array1, int[][] array2, int[][] array3, int m, int n)
+	{
+		for(int i = 0; i < m; i++)
+		{
+			for(int j = 0; j < n; j++)
+			{
+				array3[i][j] = array1[i][j] + array2[i][j];
+			}
+			
+			System.out.println();
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		int m = 0, n = 0;
+		
+		System.out.println("* * * * * This program adds two matrixes * * * * *");
+		
+		System.out.println("Enter the row number for the matrixes: ");
+		m = input.nextInt();
+		
+		System.out.println("Enter the column number for the matrixes: ");
+		n = input.nextInt();
+		
+		int[][] matrixA = new int[m][n];
+		int[][] matrixB = new int[m][n];
+		int[][] matrixC = new int[m][n];
+		
+		System.out.println("Enter the values for your matrixA: ");
+		insertion(matrixA, m, n);
+		
+		System.out.println("matrixA: ");
+		printArray(matrixA, m, n);
+		
+		System.out.println("Enter the values for your matrixB: ");
+		insertion(matrixB, m, n);
+		
+		System.out.println("matrixB: ");
+		printArray(matrixB, m, n);
+		
+		System.out.println("Adding the matrixes together.......*");
+		addArrays(matrixA, matrixB, matrixC, m, n);
+		
+		System.out.println("The added matrix: ");
+		printArray(matrixC, m, n);
+	}	
+}
+
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+				
+			
