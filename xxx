@@ -138,7 +138,9 @@ a:hover {
 /* 14. Margins, padding and borders */
 /* 15. Overflow/responsive control if required */
 
--------FORM HTML------
+-------FORM------
+
+---HTML---
 
 <!DOCTYPE html>
 <html>
@@ -210,7 +212,7 @@ a:hover {
 
 
 
--------FORM JS--------
+---JS---
 
 function validateForm() {
     document.getElementById("nameError").innerText = "";
@@ -266,3 +268,291 @@ function validateForm() {
     return false;
 }
 
+
+----TRAINS WEBSITE----
+
+---HTML---
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Home - Trains Sri Lanka</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="header">
+             <h1> Trains in Sri Lanka</h1>
+        <h4>The Heritage of Sri Lankan Railways</h4>
+        </div>
+
+        <div class="content">
+
+            <div class="sidebar">
+                <h3>Social Profiles</h3>
+                <img src="images/fb.png" width="50">
+            <img src="images/g.png" width="50">
+            <img src="images/li.png" width="50">
+
+                <hr>
+
+                <h3>Hit Counter</h3>
+                 <p>0000542</p>
+                <hr>
+
+                <h3>Subscribe</h3>
+                <div class="subscribeBox">
+                    <form name="subscriptionForm">
+                       <input type="email" placeholder="Enter your email address">
+                    <br><br>
+                    <button type="submit">Subscribe</button><input type="email" placeholder="Enter your email address">
+                    <br><br>
+                    <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+
+                <hr>
+                <h3>Contact Author</h3>
+                <div class="contactBox">
+                   <p> [Your Name]</p>
+                <p> [Your email address]</p>
+                </div>
+            </div>
+
+            <div class="maincontent">
+
+                <h2>Class M1 Locomotives</h2>
+                 <img class="trainImage" src="images/m1.jpg">
+                <p>In the 1950s Sri Lankan railway was seeking replacements for old rolling stock, routine replacement of which had been delayed by World War II. Specifications were for 25 locomotives with 750 hp (559 kW) power at the wheel, available from 12 mph (19 km/h) upwards, and up to an altitude of 6,200 ft (1,900 m). The train was expected to be used for suburban trains centered on Colombo, as well as mail trains in the north of the country, and trains in hill areas: approximately requirements were for a vehicle capable of pulling 550 long tons (560 t; 620 short tons) at 18 mph (29 km/h) on a gradient of 1 in 44 (2.27%) on track with 5-chain (330 ft; 101 m) reverse curves; preferably within a 80 long tons (81 t; 90 short tons) locomotive weight on 6 axles (A1A-A1A). Several firms tendered for the contact; American suppliers were unable to enter a competitive bid due to the devaluation of both the rupee and British pound.</p>
+
+                <hr>
+
+                <h2>Class M2 Locomotives</h2>
+                <img class="trainImage" src="images/m2.jpg">
+                <p>From 1954, several batches of General Motors-manufactured locomotives were imported to Sri Lanka under "The Colombo Plan". Locally called a "Canadian" engine – there are actually two classes of Canadian engine in SLR – the other one is Class M4. Since these engine were imported under grants from the Canadian government, class M2 locomotives are named with Canadian province and city names. The last two locomotives were made in the United States and imported for Cement Corporation, Sri Lanka. But they were later attached to Sri Lanka Railways locomotive fleet. They were named after two local cities – Galle and Kankasanthurei – where the cement factories were located.</p>
+
+                <h4>Sub classes</h4>
+
+                        <table>
+
+                <tr>
+                    <th>Sub Class</th>
+                    <th>Weight</th>
+                    <th>Axel Arrangement</th>
+                    <th>Year</th>
+                    <th>No. of Locomotives</th>
+                </tr>
+
+                <tr>
+                    <td>M2A</td>
+                    <td rowspan="4">79 tonnes</td>
+                    <td>A1A-A1A</td>
+                    <td>1959</td>
+                    <td>3</td>
+                </tr>
+
+                <tr>
+                    <td>M2B</td>
+                    <td>A1A-A1A</td>
+                    <td>1958</td>
+                    <td>2</td>
+                </tr>
+
+                <tr>
+                    <td>M2C</td>
+                    <td>Bo-Bo</td>
+                    <td>1961</td>
+                    <td>2</td>
+                </tr>
+
+                <tr>
+                    <td>M2D</td>
+                    <td>A1A-A1A</td>
+                    <td>1966</td>
+                    <td>2</td>
+                </tr>
+
+            </table>
+            </div>
+        </div>
+
+        <div class="footer">
+             <p> © 2017 | Trains in Sri Lanka. All Rights Reserved.</p>
+        </div>
+
+    </div>
+</body>
+</html>
+
+
+---CSS---
+
+
+@charset "utf-8";
+
+/* Container */
+.container {
+    width: 800px;
+}
+
+/* Footer */
+.container .footer {
+    background: #4C92FF;
+    padding: 10px;
+    color: white;
+}
+
+/* Content */
+.container .content {
+    min-height: 120px;
+    padding: 20px;
+}
+
+/* Sidebar */
+.container .content .sidebar {
+    width: 200px;
+    min-height: 570px;
+    float: right;
+    display: inline;
+    background: #f0f6fc;
+    padding: 10px;
+}
+
+/* Header */
+.container .header {
+    background: #4C92FF;
+    height: 80px;
+    color: white;
+    padding: 10px;
+}
+
+/* Main Content */
+.maincontent {
+    width: 540px;
+}
+
+/* Headings */
+h2 {
+    color: #174b88;
+}
+
+/* Train Images */
+.trainImage {
+    width: 250px;
+    height: 180px;
+    float: right;
+    margin: 10px;
+}
+
+/* Paragraph */
+p {
+    line-height: 1.5;
+}
+
+/* Sidebar Images */
+.sidebar img {
+    width: 50px;
+    height: 50px;
+}
+
+/* Subscribe */
+.subscribeBox input {
+    width: 180px;
+    padding: 8px;
+}
+
+.subscribeBox button {
+    background: #4C92FF;
+    color: white;
+    padding: 10px;
+    border: none;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th {
+    background: #2878df;
+    color: white;
+    padding: 10px;
+}
+
+td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+/* Horizontal Line */
+hr {
+    margin: 20px 0;
+}
+
+
+CALCULATOR
+
+---HTML---
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Marks Manager</title>
+</head>
+<body>
+
+    <h2>Student Marks Manager</h2>
+    
+    <button onclick="displayResults()">Show Results</button>
+
+    <div id="output"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+---JS---
+
+let marks = [75, 82, 60, 90, 45, 88, 92, 55, 70, 68];
+
+function calculateAverage(arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+    return sum / arr.length;
+}
+
+function displayResults() {
+    let outputDiv = document.getElementById("output");
+    
+    let marksList = "<ul>";
+    for (let i = 0; i < marks.length; i++) {
+        marksList += "<li>Mark " + (i + 1) + ": " + marks[i] + "</li>";
+    }
+    marksList += "</ul>";
+
+    let avg = calculateAverage(marks);
+
+    let highest = marks[0];
+    let lowest = marks[0];
+    for (let i = 1; i < marks.length; i++) {
+        if (marks[i] > highest) {
+            highest = marks[i];
+        }
+        if (marks[i] < lowest) {
+            lowest = marks[i];
+        }
+    }
+
+    outputDiv.innerHTML = 
+        "<h3>All Marks:</h3>" + marksList +
+        "<p><strong>Average Mark:</strong> " + avg + "</p>" +
+        "<p><strong>Highest Mark:</strong> " + highest + "</p>" +
+        "<p><strong>Lowest Mark:</strong> " + lowest + "</p>";
+}
